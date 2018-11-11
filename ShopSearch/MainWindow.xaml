@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopSearch"
         mc:Ignorable="d"
-        Title="Products" Height="600" Width="800" Loaded="Window_Loaded">
+        Title="Products" Height="600" Width="800" Loaded="Window_Loaded" MinHeight="600" MinWidth="800">
     <Window.Resources>
         <CollectionViewSource x:Key="productViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Product}, CreateList=True}"/>
     </Window.Resources>
@@ -20,10 +20,10 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Label>Product name:</Label>
-            <TextBox Name="tbProductName" Margin ="3" Width="690" KeyUp="tbProductName_KeyUp"></TextBox>
+            <TextBox Name="tbProductName" Margin ="3" Width="690" HorizontalAlignment="Stretch"  KeyUp="tbProductName_KeyUp"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Label>Price:</Label>
+            <Label Width="81">Price:</Label>
             <ComboBox Name="PriceCB" Margin="10,5,10,5" Width="75">
                 <TextBlock Text="= equal"></TextBlock>
                 <TextBlock Text="> greater"></TextBlock>
@@ -36,7 +36,7 @@
             <Button Name="btnReset" Content="RESET" Margin="10,5,10,5" Click="btnReset_Click" ></Button>
         </StackPanel>
         <StackPanel Grid.Row="3" >
-            <Button Name="btnSearch" Content="Search" Margin="10,5,10,5" Click="btnSearch_Click" ></Button>
+            <Button Name="btnSearch" Content="Search" Margin="10,5,10,5"  Click="btnSearch_Click" ></Button>
         </StackPanel>
         <StackPanel Grid.Row="4" DataContext="{StaticResource productViewSource}" >
             <DataGrid x:Name="productDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="431" ItemsSource="{Binding}" Margin="10,0" RowDetailsVisibilityMode="VisibleWhenSelected">
