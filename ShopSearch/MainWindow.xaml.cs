@@ -23,8 +23,9 @@ namespace ShopSearch
     /// </summary>
     public partial class MainWindow : Window
     {
-        ShopEntities context = new ShopEntities();
-        CollectionViewSource productViewSource;
+        public ShopEntities context { get; set; } = new ShopEntities();
+        public CollectionViewSource productViewSource;
+       
 
         public MainWindow()
         {
@@ -95,6 +96,14 @@ namespace ShopSearch
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             context = new ShopEntities();
             productViewSource = ((CollectionViewSource)(FindResource("productViewSource")));
             context.Products.Load();
@@ -104,8 +113,20 @@ namespace ShopSearch
 
         private void tbProductName_KeyUp(object sender, KeyEventArgs e)
         {
-            //btnSearch.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); 
             Search();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

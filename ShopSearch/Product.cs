@@ -11,8 +11,10 @@ namespace ShopSearch
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.ComponentModel;
     
-    public partial class Product
+
+    public partial class Product 
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
@@ -20,5 +22,7 @@ namespace ShopSearch
         public Nullable<decimal> UnitPrice { get; set; }
         public string Package { get; set; }
         public bool IsDiscontinued { get; set; }
+
+       
     }
 }

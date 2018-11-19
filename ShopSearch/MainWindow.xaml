@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopSearch"
         mc:Ignorable="d"
-        Title="Products" Height="600" Width="800" Loaded="Window_Loaded" MinHeight="600" MinWidth="800">
+        Title="Products" Height="600" Width="800" Loaded="Window_Loaded" MinHeight="600" MinWidth="800" Closing="Window_Closing">
     <Window.Resources>
         <CollectionViewSource x:Key="productViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Product}, CreateList=True}"/>
     </Window.Resources>
@@ -41,12 +41,12 @@
         <StackPanel Grid.Row="4" DataContext="{StaticResource productViewSource}" >
             <DataGrid x:Name="productDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="431" ItemsSource="{Binding}" Margin="10,0" RowDetailsVisibilityMode="VisibleWhenSelected">
                 <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="productNameColumn" Binding="{Binding ProductName}" Header="Product Name" Width="300"/>
-                    <DataGridTextColumn x:Name="packageColumn" Binding="{Binding Package}" Header="Package" Width="150"/>
-                    <DataGridTextColumn x:Name="unitPriceColumn" Binding="{Binding UnitPrice}" Header="Unit Price" Width="SizeToHeader"/>
-                    <DataGridCheckBoxColumn x:Name="isDiscontinuedColumn" Binding="{Binding IsDiscontinued}" Header="Is Discontinued" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="supplierIdColumn" Binding="{Binding SupplierId}" Header="Supplier Id" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Id" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="productNameColumn" Binding="{Binding ProductName, UpdateSourceTrigger=PropertyChanged}" Header="Product Name" Width="300"/>
+                    <DataGridTextColumn x:Name="packageColumn" Binding="{Binding Package, UpdateSourceTrigger=PropertyChanged}" Header="Package" Width="150"/>
+                    <DataGridTextColumn x:Name="unitPriceColumn" Binding="{Binding UnitPrice, UpdateSourceTrigger=PropertyChanged}" Header="Unit Price" Width="SizeToHeader"/>
+                    <DataGridCheckBoxColumn x:Name="isDiscontinuedColumn" Binding="{Binding IsDiscontinued, UpdateSourceTrigger=PropertyChanged}" Header="Is Discontinued" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="supplierIdColumn" Binding="{Binding SupplierId, UpdateSourceTrigger=PropertyChanged}" Header="Supplier Id" Width="SizeToHeader"/>
                 </DataGrid.Columns>
             </DataGrid>
 
